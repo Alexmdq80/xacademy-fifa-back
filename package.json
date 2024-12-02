@@ -1,0 +1,16 @@
+{
+  "name": "xacademy",
+  "version": "1.0.0",
+  "description": "Primer proyecto de Node.JS de XAcademy",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.5",
+    "sequelize": "^6.37.5"
+  }
+}
