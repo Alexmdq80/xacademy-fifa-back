@@ -2,6 +2,8 @@ const express = require('express');
 const Player = require('../db/models/player.model')
 const router = express.Router();
 const { Op } = require('sequelize');
+const { paginate } = require('../helpers/index'); //
+
 // router.get('/', (req,res) => {
 //     // res.setHeader('content-type','text/html');
 //     res.send('<h1> Este es nuestro server </h1>');
@@ -20,44 +22,33 @@ router.get("/", async (req, res)=>{
     const where = { [Op.and]: [] };
     const filtros = req.query.filtros;
     const valores = req.query.valores;
-    // let players;
+ 
+    if (!filtros) {
+        
+    } else {
+        for (let i = 0; i < filtros.length; i++) {
+            where[Op.and].push( { [filtros[i]]: valores[i] } );
+        }
+    }    
+// ****PAGINACIÓN
+    const { page = 1, limit = 10 } = req.query;
 
-    // console.log(filtro[0]);
-    // console.log(campo[0]);
-    // console.log(filtro[1]);
-    // console.log(campo[1]);
-    // campo[1] = 15;
+    const { count, rows, pages } = await paginate(Player, page, limit, where);
 
-    // players = await Player.findAll( { where: { [filtro]: campo } } );
-    for (let i = 0; i < filtros.length; i++) {
-        // switch (filtro[i]) {
-        //     case 'long_name':
-                where[Op.and].push( { [filtros[i]]: valores[i] } );
-        //  where[Op.and].push( { long_name: 'Lionel Andrés Messi Cuccittini' } );
-       
-                //         break;
-        //     case 'fifa_version':
-        //         where[Op.and].push({ fifa_version: campo[i] });
-        //         break;
-        // }
-        // if (req.query.fifa_version) {
-        //     where.fifa_version = { [Op.and]: req.query.fifa_version };
-        // };
-    }
-    
-
+// ****
     // console.log(where);
 
-    const players = await Player.findAll({ where });
-    // if (filtros === 'long_name') {
-        //  console.log('Filtrado.');
-    // players = await Player.findAll( { where: { [filtros[0]]: campos[0] } } );
-    
-    //  } else if (!filtros) {
-    //      console.log('Sin filtro.');
-    //      players = await Player.findAll();
-    // }
-    res.status(200).json(players);
+    // const players = await Player.findAll({ where });
+
+    // res.status(200).json(players);
+
+
+    res.status(200).json({
+        count,
+        pages,
+        data: rows
+    });
+
 });
 
 // app.get('/user/:userId', myMdw, (req,res) => {
