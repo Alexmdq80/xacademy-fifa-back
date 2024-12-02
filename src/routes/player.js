@@ -18,21 +18,21 @@ router.post('/', (req, res) => {
 router.get("/", async (req, res)=>{
     // const { filtro, campo } = req.query;
     const where = { [Op.and]: [] };
-    const filtro = req.query.filtro;
-    const campo = req.query.campo;
-    let players;
+    const filtros = req.query.filtros;
+    const valores = req.query.valores;
+    // let players;
 
-    console.log(filtro[0]);
-    console.log(campo[0]);
-    console.log(filtro[1]);
-    console.log(campo[1]);
+    // console.log(filtro[0]);
+    // console.log(campo[0]);
+    // console.log(filtro[1]);
+    // console.log(campo[1]);
     // campo[1] = 15;
 
     // players = await Player.findAll( { where: { [filtro]: campo } } );
-    for (let i = 0; i < filtro.length; i++) {
+    for (let i = 0; i < filtros.length; i++) {
         // switch (filtro[i]) {
         //     case 'long_name':
-                where[Op.and].push( { [filtro[i]]: campo[i] } );
+                where[Op.and].push( { [filtros[i]]: valores[i] } );
         //  where[Op.and].push( { long_name: 'Lionel Andrés Messi Cuccittini' } );
        
                 //         break;
@@ -46,9 +46,9 @@ router.get("/", async (req, res)=>{
     }
     
 
-    console.log(where);
+    // console.log(where);
 
-    players = await Player.findAll({ where });
+    const players = await Player.findAll({ where });
     // if (filtros === 'long_name') {
         //  console.log('Filtrado.');
     // players = await Player.findAll( { where: { [filtros[0]]: campos[0] } } );
