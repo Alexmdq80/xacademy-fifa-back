@@ -3,7 +3,7 @@ const Player = require('../db/models/player.model')
 const router = express.Router();
 const { Op } = require('sequelize');
 const { paginate } = require('../helpers/index');
-// const xlsx = require('xlsx');
+const xlsx = require('xlsx');
 const { Parser } = require('json2csv');
 
 
@@ -28,7 +28,7 @@ router.get("/", async (req, res)=>{
 
     if (!archivo) {
 
-    } else if (archivo != "csv" && archivo != "xlsx") {
+    } else if (archivo != "csv" && archivo != "xlsx" && archivo != "ambos") {
         res.status(400).send('Opción de archivo no válida.');
         return;
     } else {
@@ -68,12 +68,17 @@ router.get("/", async (req, res)=>{
     const { page = 1 } = req.query;
 
     const str =  req.query.limit;
-    const limit = +str;
-    console.log(limit);    
+    let limit = 100;
+    
+    if (str) {
+        limit = +str;
+    }
+
+    // console.log(limit);    
 
     const { count, rows, pages } = await paginate(Player, page, limit, where);
 
-    if (archivo === "csv") {
+    if (archivo === "csv" || archivo === "ambos") {
 // '*********'
 // Campos que deseas incluir en el CSV
         const data = rows;
@@ -94,26 +99,45 @@ router.get("/", async (req, res)=>{
         });
         // res.status(200).send('CSV creado exitosamente.');
     } 
-      
+
+
+    if (archivo === "xlsx" || archivo === "ambos") {
+    // Suponiendo que tienes un array de objetos llamado 'data' proveniente de tu JSON
+        // Crear un nuevo libro de trabajo
+
+        // if (Array.isArray(rows) && typeof rows[0] === 'object') {
+        //     console.log('La variable contiene un arreglo de objetos');
+        // }
+
+        const workbook = xlsx.utils.book_new();
+
+        // Convertir los datos a un formato que xlsx pueda entender
+        // const worksheetData = xlsx.utils.json_to_sheet(data);
+
+        const jugadores = rows.map(jugador => jugador.dataValues);
+
+        // console.log(jugadores);
+
+        let ws = xlsx.utils.json_to_sheet(
+            jugadores
+        , {header:fields, skipHeader:false});
+
+        // Agregar la hoja al libro de trabajo
+        xlsx.utils.book_append_sheet(workbook, ws, 'Data');
+
+
+        // Escribir el libro de trabajo a un archivo
+        xlsx.writeFile(workbook, 'data.xlsx'); 
+
+    } 
+    
     res.status(200).json({
             count,
             pages,
             data: rows
             });
     
-        // Suponiendo que tienes un array de objetos llamado 'data' proveniente de tu JSON
-    // console.log(rows);
-    // // Crear un nuevo libro de trabajo
-    // const workbook = xlsx.utils.book_new();
 
-    // // Convertir los datos a un formato que xlsx pueda entender
-    // const worksheetData = xlsx.utils.json_to_sheet(rows);
-
-    // // Agregar la hoja al libro de trabajo
-    // xlsx.utils.book_append_sheet(workbook, worksheetData, 'Data');
-
-    // // Escribir el libro de trabajo a un archivo
-    // xlsx.writeFile(workbook, 'data.xlsx'); 
 
 });
 
