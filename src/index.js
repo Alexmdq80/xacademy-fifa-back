@@ -1,17 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser'); 
-const PORT = 8080;
+// const PORT = 8080;
+const PORT = process.env.PORT;
 const { initDb } = require("./db");
 
 const { logging } =  require("./middleware");
-const { playerRouter } = require("./routes");
+const { playerRouter, userRouter } = require("./routes");
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(logging);
 app.use('/player', playerRouter);
-
+app.use('/user', userRouter);
 
 app.listen(PORT, async () => {
     await initDb();

@@ -6,6 +6,8 @@ const { paginate, convertirAEntero } = require('../helpers/index');
 const xlsx = require('xlsx');
 const { Parser } = require('json2csv');
 
+router.use(express.json());
+
 router.post("/", async (req, res)=>{
     const { newPlayer } = req.body;
     console.log(newPlayer);
