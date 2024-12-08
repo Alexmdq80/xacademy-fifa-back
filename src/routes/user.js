@@ -32,7 +32,7 @@ router.post("/login", async (req, res)=>{
         console.log(error);
         res.status(401).send(error.message);
     }
-
+    
 });
 
 // app.get('/player/:playerId', myMdw, (req,res) => {
@@ -57,24 +57,49 @@ router.put('/:userId', async (req,res) => {
 
 router.delete('/:userId', async (req,res) => {
     const { userId } = req.params;
+    const { email, password } = req.body;
+    let mensaje;
 
-// PODRÍA AGREGAR SOLICITAR LA CONTRASEÑA...
+    // PODRÍA AGREGAR SOLICITAR LA CONTRASEÑA...
     try {
-        const user = await User.findByPk(userId);
-        if (!user) {
-          throw new Error("Usuario no encontrado.");
-        };
-        await User.destroy( { where: { id: userId } } );
-        res.status(201).send(`El usuario ${user.name} fue eliminado`);
+       
+        const deleted = await UserDB.delete({ userId, email, password })
+
+        // res.status(201).json(deleted);   
+        // const user = await User.findByPk(userId);
+        // if (!user) {
+        //   throw new Error("Usuario no encontrado.");
+        // };
+        // await User.destroy( { where: { id: userId } } );
+        console.log(deleted);
+
+        res.status(201).send(`El usuario ${deleted.name} fue eliminado`);
 
     } catch (error) {
+        let codigo;
+        switch (error.message) {
+            case 'Usuario no encontrado.': 
+                mensaje = error.message;
+                codigo = 500;
+                break;
+            
+            case 'Contraseña incorrecta.':
+                mensaje = error.message;
+                codigo = 404;
+                break;
+            default:
+                mensaje = 'Error inesperado.';
+                codigo = 500;
+                break;
+        }
         
         res
-            .status(error.message === "Usuario no encontrado." ? 404:500)
-            .send(error.message);
+            // .status(error.message === "Usuario no encontrado." ? 404:500)
+            .status(codigo)
+            .send(mensaje);
+            // .send(error.message);
    
     }
-
 
 });
 

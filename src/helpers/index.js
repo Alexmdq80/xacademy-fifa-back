@@ -74,7 +74,6 @@ async function paginate(model, page, limit, where = {}) {
     static async update( { userId, email, name, oldPassword, newPassword, passwordConfirm} ) {
           
       console.log(newPassword);
-      console.log(oldPassword);
       console.log(passwordConfirm);
       if (newPassword != passwordConfirm) throw new Error('Las contraseñas no coinciden');
 
@@ -104,6 +103,33 @@ async function paginate(model, page, limit, where = {}) {
       return updated;
 
     }
+
+    static async delete( { userId, email, password} ) {
+          
+        // PARA ELIMINAR DEBE COINCIDIR EL ID CON EL EMAIL Y LA CONTRASEÑA DEBE SER VÁLIDA
+      const user = await User.findOne({ 
+          where: {
+                  id: userId,
+                  email: email}
+                  });
+      
+      if (!user) throw new Error('Usuario no encontrado.');
+
+      const isValid = await bcrypt.compare(password, user.password);
+      
+      if (!isValid) throw new Error('Contraseña incorrecta.');
+     
+      const deleted = await User.destroy( { where: { id: userId } } );
+
+      const result = {
+                  deleted,
+                  name: user.name
+                };
+                
+      return result;
+
+    }
+
   }
 
   class Validation {
