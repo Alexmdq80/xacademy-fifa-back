@@ -1,3 +1,3 @@
-const logging = require("./logging");
+const loging = require("./loging");
 
-module.exports= { logging };
+module.exports= { loging };

@@ -6,11 +6,43 @@ const { paginate, convertirAEntero } = require('../helpers/index');
 const xlsx = require('xlsx');
 const { Parser } = require('json2csv');
 
+const passport = require('passport');
+const passportJWT = require('passport-jwt');
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
+const config = require('dotenv').config();
+const jwt = require('jsonwebtoken');
+// const SECRET = process.env.SECRET_JWK_KEY;
+const SECRET = config.parsed.SECRET_JWK_KEY;
+
+passport.use(new JWTStrategy({
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(), secretOrKey: SECRET}, 
+    (jwtPayload, done) => {
+
+        if (!jwtPayload) {
+            console.log('Token no válido');
+            return done(null, false, { message: 'El token no es válido'});
+        }
+        // if (usuarioNoExiste) {
+        //     return done(null, false, { message: 'El usuario no existe' });
+        // }
+        // if (passwordIncorrecto) {
+        //   return done(null, false, { message: 'Autenticacion invalida' });
+        // }
+
+        return done(null, jwtPayload);
+
+}));
+
 router.use(express.json());
 
-router.post("/", async (req, res)=>{
+router.post("/", passport.authenticate('jwt', { session: false }), async (req, res)=>{
+//  router.post("/", async (req, res)=>{
+
     const { newPlayer } = req.body;
-    console.log(newPlayer);
+    // console.log(newPlayer);
+    console.log('Ruta Protegida.');
+
     try {
         const newJugador = await Player.create( newPlayer );
         res.status(201).json(newJugador);
@@ -20,10 +52,14 @@ router.post("/", async (req, res)=>{
     }
 });
 
-router.get("/", async (req, res)=>{
+router.get("/", passport.authenticate('jwt', { session: false }), async (req, res)=>{
+// router.get("/", async (req, res)=>{
+
     const { filtros, valores, archivo } = req.query;
     const where = { [Op.and]: [] };
     let fields = [];
+
+    // console.log('Ruta Protegida.');
 
     if (!archivo) {
 
@@ -108,10 +144,12 @@ router.get("/", async (req, res)=>{
 
 });
 
-// app.get('/player/:playerId', myMdw, (req,res) => {
-router.get('/:playerId', async (req,res) => {
-    const { playerId } = req.params;
+router.get('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
+// router.get('/:playerId', async (req,res) => {
 
+    const { playerId } = req.params;
+   
+    console.log('Ruta Protegida.');
     console.log(playerId);
 
     Player.findByPk(playerId)
@@ -127,10 +165,13 @@ router.get('/:playerId', async (req,res) => {
 
 });
 
-router.put('/:playerId', async (req,res) => {
+router.put('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
+// router.put('/:playerId', async (req,res) => {
     const { playerId } = req.params;
     const playerToUpdate = req.body.playerToUpdate;
-    
+   
+    console.log('Ruta Protegida.');
+
     try {
         const jugador = await Player.findByPk(playerId);
         if (!jugador) {
@@ -145,8 +186,12 @@ router.put('/:playerId', async (req,res) => {
     };
 });
 
-router.delete('/:playerId', async (req,res) => {
+router.delete('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
+// router.delete('/:playerId', async (req,res) => {
+
     const playerId = req.params.playerId;
+   
+    console.log('Ruta Protegida.');
 
     try {
         const jugador = await Player.findByPk(playerId);

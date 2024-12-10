@@ -1,9 +1,13 @@
 const express = require('express');
-const User = require('../db/models/user.model')
 const router = express.Router();
 const { UserDB } = require('../helpers/index');
+const jwt = require('jsonwebtoken');
+// const cookieParser = require('cookie-parser');
+
+require('dotenv').config();
 
 router.use(express.json());
+// router.use(cookieParser());
 
 router.post("/register", async (req, res)=>{
     const { name, email, password, passwordConfirm } = req.body;
@@ -21,12 +25,29 @@ router.post("/register", async (req, res)=>{
 });
 
 router.post("/login", async (req, res)=>{
+
+    const SECRET = process.env.SECRET_JWK_KEY;
     const { email, password } = req.body;
     console.log(req.body);
     try {
         const user = await UserDB.login({ email, password})
-        // if (user === null) throw new Error('Error de usuario y/o contraseña');
-        res.status(200).send({ user });
+
+        console.log('Usuario login: ', user);
+
+        const payload = { name: user.name, email: user.email };
+
+        const token = jwt.sign(payload, SECRET, { expiresIn: '1h' });
+
+        res.status(200).send({ user, token });
+
+        // res
+        //     .cookie('access_token', token, {
+        //         httpOnly: true,
+        //         secure: false,
+        //         sameSite: 'strict',
+        //         maxAge: 1000 * 60 * 60
+        //     }) 
+        //     .status(200).send({ user, token });
 
     } catch(error) {
         console.log(error);

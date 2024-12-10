@@ -1,17 +1,16 @@
-require('dotenv').config();
+const config = require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser'); 
-// const PORT = 8080;
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
+// se puede hacer sin asignar a una constante, accediendo a process directamente. 
+const PORT = config.parsed.PORT;
 const { initDb } = require("./db");
-
-const { logging } =  require("./middleware");
+const { loging } =  require("./middleware");
 const { playerRouter, userRouter } = require("./routes");
-
 const app = express();
 
 app.use(bodyParser.json());
-app.use(logging);
+app.use(loging);
 app.use('/player', playerRouter);
 app.use('/user', userRouter);
 
