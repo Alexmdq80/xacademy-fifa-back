@@ -24,7 +24,7 @@ async function paginate(model, page, limit, where = {}) {
       return 100; 
     }
   }
-  
+ 
   module.exports = { paginate, convertirAEntero };
 
   

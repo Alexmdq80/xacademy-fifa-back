@@ -50,6 +50,10 @@ const Player = sequelize.define("players", {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     height_cm: {
       type: DataTypes.INTEGER,
     },
