@@ -2,16 +2,51 @@ const express = require('express');
 const router = express.Router();
 const { UserDB } = require('../helpers/index');
 const jwt = require('jsonwebtoken');
-// const cookieParser = require('cookie-parser');
+const { body, matchedData, validationResult } = require('express-validator');
+
+// can be reused by many routes
+const validate = validations => {
+  return async (req, res, next) => {
+    // sequential processing, stops running validations chain if one fails.
+    for (const validation of validations) {
+      const result = await validation.run(req);
+      if (!result.isEmpty()) {
+        return res.status(400).json({ errors: result.array() });
+      }
+    }
+
+    next();
+  };
+};
+
 
 require('dotenv').config();
 
 router.use(express.json());
-// router.use(cookieParser());
 
-router.post("/register", async (req, res)=>{
-    const { name, email, password, passwordConfirm } = req.body;
-    console.log(req.body);
+router.post("/register", validate([
+    body('name').isAlpha(),
+    body('email').isEmail(),
+    body('password').isLength({ min: 6 })
+  ]) ,async (req, res)=>{
+    const { name, email, passwordConfirm } = req.body;
+    
+    const { password } = matchedData(req);
+
+    if (password) {
+        await body('passwordConfirm')
+        .equals(password)
+        .withMessage('passwords do not match')
+        .run(req);
+    }
+
+    const errors = validationResult(req);
+    
+    if (!errors.isEmpty()) {
+      console.log(errors.array()); // Log all errors
+      return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
         const id = await UserDB.create({ name, email, password, passwordConfirm})
         if (id === null) {
