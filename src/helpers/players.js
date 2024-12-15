@@ -45,10 +45,38 @@ class PlayerDB {
   
         try {
             const player = await Player.findByPk(playerId);
-            
+    
+
             if (!player) throw new Error("ID de jugador inexistente.");
          
             return player;
+
+        } catch(error) {
+            throw new Error(error.message);  
+        }
+
+    }
+
+    static async getAtributos( ) {
+  
+        try {
+            const attributes = await Player.getAttributes();
+
+            if (!attributes) throw new Error("Error leyendo atributos de Player.");
+            
+// Función para extraer los campos y sus tipos
+            const fieldsAndTypes = [];
+            for (const field in attributes) {
+                if (attributes.hasOwnProperty(field)) {
+                    fieldsAndTypes.push({
+                        atributo: field,
+                        tipo: attributes[field].type
+                      });
+                }
+            }
+            // console.log(fieldsAndTypes);
+            
+            return fieldsAndTypes;
 
         } catch(error) {
             throw new Error(error.message);  

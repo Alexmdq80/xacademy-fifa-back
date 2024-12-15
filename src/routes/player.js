@@ -75,6 +75,18 @@ router.get("/", passport.authenticate('jwt', { session: false }), async (req, re
     }
 });
 
+// router.get('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
+router.get('/atributos', async (req,res) => { 
+
+    try {
+        const atributos = await PlayerDB.getAtributos();
+        res.status(200).json( atributos );
+    } catch(error) {
+        res.status(500).send(error.message);
+    }  
+    
+});
+
 router.get('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
 // router.get('/:playerId', async (req,res) => { 
 
