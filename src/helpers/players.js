@@ -60,23 +60,40 @@ class PlayerDB {
     static async getAtributos( ) {
   
         try {
-            const attributes = await Player.getAttributes();
+            // const attributes = await Player.getAttributes();
 
-            if (!attributes) throw new Error("Error leyendo atributos de Player.");
+            // if (!attributes) throw new Error("Error leyendo atributos de Player.");
             
 // Función para extraer los campos y sus tipos
-            const fieldsAndTypes = [];
-            for (const field in attributes) {
-                if (attributes.hasOwnProperty(field)) {
-                    fieldsAndTypes.push({
-                        atributo: field,
-                        tipo: attributes[field].type
-                      });
-                }
-            }
+            // const fieldsAndTypes = [];
+            // for (const field in attributes) {
+            //     if (attributes.hasOwnProperty(field)) {
+            //         fieldsAndTypes.push({
+            //             atributo: field,
+            //             tipo: attributes[field].type
+            //           });
+            //     }
+            // }
+
+
             // console.log(fieldsAndTypes);
             
-            return fieldsAndTypes;
+            // return fieldsAndTypes;
+         
+            const playerAttributes = Object.keys(Player.attributeTypes).map(key => ({
+                name: key,
+                type: Player.attributeTypes[key].type,
+                viewName: Player.attributeTypes[key].viewName
+            }));
+            
+            // for (const propiedad in playerAttributes.type) {
+            //     playerAttributes[propiedad] = playerAttributes.type[propiedad];
+            //   }
+
+            // delete playerAttributes.type;
+            //  console.log(playerAttributes); 
+
+            return playerAttributes;
 
         } catch(error) {
             throw new Error(error.message);  
