@@ -49,7 +49,10 @@ class PlayerDB {
 
             if (!player) throw new Error("ID de jugador inexistente.");
          
-            return player;
+            const playerArray = [player];
+
+            return playerArray;
+            // return player;
 
         } catch(error) {
             throw new Error(error.message);  
