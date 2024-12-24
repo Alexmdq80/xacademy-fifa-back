@@ -16,30 +16,64 @@ class PlayerDB {
 
     }
     
-    static async getFiltro( filtros, valores, pagina, limite ) {
+    // static async getFiltro( filtros, valores, pagina, limite ) {
 
-       const where = { [Op.and]: [] };
+    //    const where = { [Op.and]: [] };
 
-        if (!filtros) {
+    //     if (!filtros) {
 
-        } else if (filtros.length === valores.length) {
-            for (let i = 0; i < filtros.length; i++) {
-                where[Op.and].push( { [filtros[i]]: valores[i] } );
-            }
-        } else {
-            throw new Error('No coinciden la cantidad de filtros y los valores enviados.');
-        }   
+    //     } else if (filtros.length === valores.length) {
+    //         for (let i = 0; i < filtros.length; i++) {
+    //             where[Op.and].push( { [filtros[i]]: valores[i] } );
+    //         }
+    //     } else {
+    //         throw new Error('No coinciden la cantidad de filtros y los valores enviados.');
+    //     }   
 
-        const { count, rows, pages } = await paginate(Player, pagina, limite, where);
+    //     const { count, rows, pages } = await paginate(Player, pagina, limite, where);
 
-        const result = {
-            count,
-            pages,
-            data: rows
-        }
-        return result; 
+    //     const result = {
+    //         count,
+    //         pages,
+    //         data: rows
+    //     }
+    //     return result; 
 
-    }
+    // }
+
+    static async getFiltro( filtros, valores_min, valores_max, pagina, limite ) {
+
+        const where = { [Op.and]: [] };
+ 
+         if (!filtros) {
+ 
+         } else if (filtros.length === valores_min.length) {
+             for (let i = 0; i < filtros.length; i++) {
+                if (valores_max[i] == 0) {
+                    where[Op.and].push( { [filtros[i]]: valores_min[i] } );
+                } else {
+                    where[Op.and].push( { 
+                        [filtros[i]]: { 
+                            [Op.between]: [valores_min[i], valores_max[i]]
+                         } } );
+                    
+                } 
+             }
+         } else {
+             throw new Error('No coinciden la cantidad de filtros y los valores enviados.');
+         }   
+ 
+         const { count, rows, pages } = await paginate(Player, pagina, limite, where);
+ 
+         const result = {
+             count,
+             pages,
+             data: rows
+         }
+         return result; 
+ 
+     }
+ 
 
     static async getxID( playerId ) {
   
