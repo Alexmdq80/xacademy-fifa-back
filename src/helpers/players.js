@@ -50,7 +50,21 @@ class PlayerDB {
          } else if (filtros.length === valores_min.length) {
              for (let i = 0; i < filtros.length; i++) {
                 if (valores_max[i] == 0) {
-                    where[Op.and].push( { [filtros[i]]: valores_min[i] } );
+          
+                    const atributo = Player.attributeTypes[filtros[i]];
+                  
+                    console.log(atributo.type);
+                    if (atributo.type === 'string') {
+                        where[Op.and].push( { 
+                            [filtros[i]]: { 
+                                [Op.like]: '%' + valores_min[i] + '%'
+                             } } );
+                    
+                        // where[Op.like].push( { [filtros[i]]: '%' + valores_min[i] + '%' } );
+                    } else {
+                        where[Op.and].push( { [filtros[i]]: valores_min[i] } );
+                    }
+
                 } else {
                     where[Op.and].push( { 
                         [filtros[i]]: { 
