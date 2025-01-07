@@ -134,7 +134,8 @@ class PlayerDB {
             const playerAttributes = Object.keys(Player.attributeTypes).map(key => ({
                 name: key,
                 type: Player.attributeTypes[key].type,
-                viewName: Player.attributeTypes[key].viewName
+                viewName: Player.attributeTypes[key].viewName,
+                esSkill: Player.attributeTypes[key].esSkill
             }));
             
             // for (const propiedad in playerAttributes.type) {

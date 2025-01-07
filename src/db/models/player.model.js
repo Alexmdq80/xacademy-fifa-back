@@ -192,227 +192,283 @@ const Player = sequelize.define("players", {
 Player.attributeTypes = {
   id: {
     type: 'integer',
-    viewName: 'ID'
+    viewName: 'ID',
+    esSkill: false,
   },
   fifa_version: {
     type: 'string',
-    viewName: 'Versión FIFA'
+    viewName: 'Versión FIFA',
+    esSkill: false,
   },
   fifa_update: {
     type: 'string',
-    viewName: 'Actualización FIFA'
+    viewName: 'Actualización FIFA',
+    esSkill: false,
   }, 
   player_face_url: {
     type: 'string',
-    viewName: 'Foto'
+    viewName: 'Foto',
+    esSkill: false,
   },
   long_name: {
     type: 'string',
-    viewName: 'Nombre y Apellido'
+    viewName: 'Nombre y Apellido',
+    esSkill: false,
   },
   player_positions: {
     type: 'string',
-    viewName: 'Posiciones'
+    viewName: 'Posiciones',
+    esSkill: false,
   },
   club_name: {
     type: 'string',
-    viewName: 'Club'
+    viewName: 'Club',
+    esSkill: false,
   },
   nationality_name: {
     type: 'string',
-    viewName: 'Nacionalidad'
+    viewName: 'Nacionalidad',
+    esSkill: false,
   },
   overall: {
     type: 'integer',
-    viewName: 'Puntuación General'
+    viewName: 'Puntuación General',
+    esSkill: true,
   },
   potential: {
     type: 'integer',
-    viewName: 'Potencial'
+    viewName: 'Potencial',
+    esSkill: true,
   },
   value_eur: {
     type: 'integer',
-    viewName: 'Valor en Euros'
+    viewName: 'Valor en Euros',
+    esSkill: false,
   },
   wage_eur: {
     type: 'integer',
-    viewName: 'Salario en Euros'
+    viewName: 'Salario en Euros',
+    esSkill: false,
   },
   age: {
     type: 'integer',
-    viewName: 'Edad'
+    viewName: 'Edad',
+    esSkill: false,
   },
   gender: {
     type: 'string',
-    viewName: 'Género'
+    viewName: 'Género',
+    esSkill: false,
   },
   height_cm: {
     type: 'integer',
-    viewName: 'Altura (cm)'
+    viewName: 'Altura (cm)',
+    esSkill: false,
   },
   weight_kg: {
     type: 'integer',
-    viewName: 'Peso (kg)'
+    viewName: 'Peso (kg)',
+    esSkill: false,
   },
   preferred_foot: {
     type: 'string',
-    viewName: 'Pie Hábil'
+    viewName: 'Pie Hábil',
+    esSkill: false,
   },
   weak_foot: {
     type: 'integer',
-    viewName: 'Pie Débil'
+    viewName: 'Pie Débil',
+    esSkill: false,
   },
   skill_moves: {
     type: 'integer',
-    viewName: 'Habilidades Especiales'
+    viewName: 'Habilidades Especiales',
+    esSkill: true,
   },
   international_reputation: {
     type: 'integer',
-    viewName: 'Reputación Internacional'
+    viewName: 'Reputación Internacional',
+    esSkill: true,
   },
   work_rate: {
     type: 'string',
-    viewName: 'Esfuerzo'
+    viewName: 'Esfuerzo',
+    esSkill: true,
   },
   body_type: {
     type: 'string',
-    viewName: 'Físico'
+    viewName: 'Físico',
+    esSkill: true,
   },
   pace: {
     type: 'integer',
-    viewName: 'Velocidad'
+    viewName: 'Velocidad',
+    esSkill: true,
   },
   shooting: {
     type: 'integer',
-    viewName: 'Tiro'
+    viewName: 'Tiro',
+    esSkill: true,
   },
   passing: {
     type: 'integer',
-    viewName: 'Pase'
+    viewName: 'Pase',
+    esSkill: true,
   },
   dribbling: {
     type: 'integer',
-    viewName: 'Regate'
+    viewName: 'Regate',
+    esSkill: true,
   },
   skill_curve: {
     type: 'integer',
-    viewName: 'Curva de Aprendizaje'
+    viewName: 'Curva de Aprendizaje',
+    esSkill: true,
   },
   skill_fk_accuracy: {
     type: 'integer',
-    viewName: 'Puntería'
+    viewName: 'Puntería',
+    esSkill: true,
   },
   skill_long_passing: {
     type: 'integer',
-    viewName: 'Pase Largo'
+    viewName: 'Pase Largo',
+    esSkill: true,
   },
   skill_ball_control: {
     type: 'integer',
-    viewName: 'Control del Balón'
+    viewName: 'Control del Balón',
+    esSkill: true,
   },
   movement_acceleration: {
     type: 'integer',
-    viewName: 'Aceleración'
+    viewName: 'Aceleración',
+    esSkill: true,
   }, 
   movement_sprint_speed: {
     type: 'integer',
-    viewName: 'Velocidad de Sprint'
+    viewName: 'Velocidad de Sprint',
+    esSkill: true,
   }, 
   movement_agility: {
     type: 'integer',
-    viewName: 'Agilidad'
+    viewName: 'Agilidad',
+    esSkill: true,
   },
   movement_reactions: {
     type: 'integer',
-    viewName: 'Reacción'
+    viewName: 'Reacción',
+    esSkill: true,
   },
   movement_balance: {
     type: 'integer',
-    viewName: 'Equilibrio'
+    viewName: 'Equilibrio',
+    esSkill: true,
   },
   power_shot_power: {
     type: 'integer',
-    viewName: 'Potencia de Tiro'
+    viewName: 'Potencia de Tiro',
+    esSkill: true,
   },
   power_jumping: {
     type: 'integer',
-    viewName: 'Potencia de Salto'
+    viewName: 'Potencia de Salto',
+    esSkill: true,
   },
   power_stamina: {
     type: 'integer',
-    viewName: 'Resistencia'
+    viewName: 'Resistencia',
+    esSkill: true,
   },
   power_strength: {
     type: 'integer',
-    viewName: 'Fuerza'
+    viewName: 'Fuerza',
+    esSkill: true,
   },
   power_long_shots: {
     type: 'integer',
-    viewName: 'Potencia de Tiros Largos'
+    viewName: 'Potencia de Tiros Largos',
+    esSkill: true,
   },
   mentality_aggression: {
     type: 'integer',
-    viewName: 'Agresividad'
+    viewName: 'Agresividad',
+    esSkill: true,
   },
   mentality_interceptions: {
     type: 'integer',
-    viewName: 'Intercepciones'
+    viewName: 'Intercepciones',
+    esSkill: true,
   },
   mentality_positioning: {
     type: 'integer',
-    viewName: 'Posicionamiento'
+    viewName: 'Posicionamiento',
+    esSkill: true,
   },
   mentality_vision: {
     type: 'integer',
-    viewName: 'Visión'
+    viewName: 'Visión',
+    esSkill: true,
   },
   mentality_penalties: {
     type: 'integer',
-    viewName: 'Penales'
+    viewName: 'Penales',
+    esSkill: true,
   },
   mentality_composure: {
     type: 'integer',
-    viewName: 'Comportamiento'
+    viewName: 'Comportamiento',
+    esSkill: true,
   },
   defending_marking: {
     type: 'integer',
-    viewName: 'Marca en Defensa'
+    viewName: 'Marca en Defensa',
+    esSkill: true,
   },
   defending_standing_tackle: {
     type: 'integer',
-    viewName: 'Defensa sin derribo'
+    viewName: 'Defensa sin derribo',
+    esSkill: true,
   },
   defending_sliding_tackle: {
     type: 'integer',
-    viewName: 'Barrida defensiva'
+    viewName: 'Barrida defensiva',
+    esSkill: true,
   },
   goalkeeping_diving: {
     type: 'integer',
-    viewName: 'Arquero: Atrapada de Volea'
+    viewName: 'Arquero: Atrapada de Volea',
+    esSkill: true,
   },
   goalkeeping_handling: {
     type: 'integer',
-    viewName: 'Arquero: Manejo del Balón'
+    viewName: 'Arquero: Manejo del Balón',
+    esSkill: true,
   },
   goalkeeping_kicking: {
     type: 'integer',
-    viewName: 'Arquero: Saque'
+    viewName: 'Arquero: Saque',
+    esSkill: true,
   },
   goalkeeping_positioning: {
     type: 'integer',
-    viewName: 'Arquero: Posicionamiento'
+    viewName: 'Arquero: Posicionamiento',
+    esSkill: true,
   },
   goalkeeping_reflexes: {
     type: 'integer',
-    viewName: 'Arquero: Reflejos'
+    viewName: 'Arquero: Reflejos',
+    esSkill: true,
   },
   goalkeeping_speed: {
     type: 'integer',
-    viewName: 'Arquero: Velocidad'
+    viewName: 'Arquero: Velocidad',
+    esSkill: true,
   },
   player_traits: {
     type: 'string',
-    viewName: 'Características'
+    viewName: 'Características',
+    esSkill: false,
   },
 };
 
