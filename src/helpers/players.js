@@ -135,7 +135,12 @@ class PlayerDB {
                 name: key,
                 type: Player.attributeTypes[key].type,
                 viewName: Player.attributeTypes[key].viewName,
-                esSkill: Player.attributeTypes[key].esSkill
+                esSkill: Player.attributeTypes[key].esSkill,
+                esNombre: Player.attributeTypes[key].esNombre,
+                minVal: Player.attributeTypes[key].minVal,
+                maxVal: Player.attributeTypes[key].maxVal,
+                minLen: Player.attributeTypes[key].minLen,
+                maxLen: Player.attributeTypes[key].maxLen,
             }));
             
             // for (const propiedad in playerAttributes.type) {
