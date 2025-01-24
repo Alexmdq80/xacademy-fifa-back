@@ -217,640 +217,767 @@ Player.attributeTypes = {
   id: {
     type: 'integer',
     viewName: 'ID',
+    required: true,
+    group: ['key'],
     esSkill: false,
     esNombre: false,
-    minVal: 0,
-    maxVal: 0,
-    minLen: 0,
-    maxLen: 0
+    minVal: -1,
+    maxVal: -1,
+    minLen: -1,
+    maxLen: -1
   },
   fifa_version: {
     type: 'string',
     viewName: 'Versión FIFA',
+    required: false,
+    group: ['general'],
     esSkill: false,
     esNombre: false,
     minVal: 15,
     maxVal: 23,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   fifa_update: {
     type: 'string',
     viewName: 'Update de FIFA',
+    required: false,
+    group: ['general'],
     esSkill: false,
     esNombre: false,
     minVal: 1,
     maxVal: 99,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   }, 
   player_face_url: {
     type: 'string',
     viewName: 'URL de la Foto',
+    required: false,
+    group: ['general'],
     esSkill: false,
     esNombre: false,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 8,
     maxLen: 255
   },
   long_name: {
     type: 'string',
     viewName: 'Nombres y Apellidos',
+    required: true,
+    group: ['personal'],
     esSkill: false,
     esNombre: true,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 4,
     maxLen: 255
   },
   player_positions: {
     type: 'string',
     viewName: 'Posiciones',
+    required: true,
+    group: ['juego'],
     esSkill: false,
     esNombre: false,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 2,
     maxLen: 255
   },
   club_name: {
     type: 'string',
     viewName: 'Club',
+    required: true,
+    group: ['juego'],
     esSkill: false,
     esNombre: true,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 3,
     maxLen: 255
   },
   nationality_name: {
     type: 'string',
     viewName: 'Nacionalidad',
+    required: true,
+    group: ['personal'],
     esSkill: false,
     esNombre: true,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 3,
     maxLen: 255
   },
   overall: {
     type: 'integer',
     viewName: 'Puntuación General',
+    required: true,
+    group: ['juego'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   potential: {
     type: 'integer',
     viewName: 'Potencial',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   value_eur: {
     type: 'integer',
     viewName: 'Valor en Euros',
+    required: true,
+    group: ['juego'],
     esSkill: false,
     esNombre: false,
     minVal: 0,
     maxVal: 350000000,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   wage_eur: {
     type: 'integer',
     viewName: 'Salario en Euros',
+    required: true,
+    group: ['juego'],
     esSkill: false,
     esNombre: false,
     minVal: 0,
     maxVal: 1000000,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   age: {
     type: 'integer',
     viewName: 'Edad',
+    required: true,
+    group: ['personal'],
     esSkill: false,
     esNombre: false,
     minVal: 16,
     maxVal: 65,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   gender: {
     type: 'string',
     viewName: 'Sexo',
+    required: true,
+    group: ['personal'],
     esSkill: false,
     esNombre: false,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 3,
     maxLen: 255
   },
   height_cm: {
     type: 'integer',
     viewName: 'Altura (cm)',
+    required: true,
+    group: ['personal'],
     esSkill: false,
     esNombre: false,
     minVal: 120,
     maxVal: 235,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   weight_kg: {
     type: 'integer',
     viewName: 'Peso (kg)',
+    required: true,
+    group: ['personal'],
     esSkill: false,
     esNombre: false,
     minVal: 40,
     maxVal: 130,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   preferred_foot: {
     type: 'string',
     viewName: 'Pie Preferido',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: false,
     esNombre: false,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 3,
     maxLen: 255
   },
   weak_foot: {
     type: 'integer',
     viewName: 'Debilidad de Pie',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: false,
     esNombre: false,
-    minVal: 0,
-    maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minVal: 1,
+    maxVal: 5,
+    minLen: -1,
+    maxLen: -1
   },
   skill_moves: {
     type: 'integer',
     viewName: 'Habilidades Especiales',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
-    minVal: 0,
-    maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minVal: 1,
+    maxVal: 5,
+    minLen: -1,
+    maxLen: -1
   },
   international_reputation: {
     type: 'integer',
     viewName: 'Reputación Internacional',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
-    minVal: 0,
-    maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minVal: 1,
+    maxVal: 5,
+    minLen: -1,
+    maxLen: -1
   },
   work_rate: {
     type: 'string',
     viewName: 'Ritmo de Trabajo',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   body_type: {
     type: 'string',
     viewName: 'Tipo de Cuerpo',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   pace: {
     type: 'integer',
     viewName: 'Velocidad',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   shooting: {
     type: 'integer',
     viewName: 'Disparo',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   passing: {
     type: 'integer',
     viewName: 'Pase',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   dribbling: {
     type: 'integer',
     viewName: 'Regate',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   defending: {
     type: 'integer',
     viewName: 'Defensa',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   physic: {
     type: 'integer',
     viewName: 'Físico',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   attacking_crossing: {
     type: 'integer',
     viewName: 'Pase en profundidad',
+    required: true,
+    group: ['juego','habilidad_especifica','ataque'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   attacking_finishing: {
     type: 'integer',
     viewName: 'Remate',
+    required: true,
+    group: ['juego','habilidad_especifica','ataque'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   attacking_heading_accuracy: {
     type: 'integer',
     viewName: 'Cabezazo',
+    required: true,
+    group: ['juego','habilidad_especifica','ataque'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   attacking_short_passing: {
     type: 'integer',
     viewName: 'Pase corto',
+    required: true,
+    group: ['juego','habilidad_especifica','ataque'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   attacking_volleys: {
     type: 'integer',
     viewName: 'Voleas',
+    required: true,
+    group: ['juego','habilidad_especifica','ataque'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   skill_dribbling: {
     type: 'integer',
     viewName: 'Regate (Habilidad)',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
-     minVal: 0,
+    minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   skill_curve: {
     type: 'integer',
     viewName: 'Curva de Aprendizaje',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   skill_fk_accuracy: {
     type: 'integer',
     viewName: 'Puntería',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   skill_long_passing: {
     type: 'integer',
     viewName: 'Pase Largo',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   skill_ball_control: {
     type: 'integer',
     viewName: 'Control del Balón',
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   movement_acceleration: {
     type: 'integer',
     viewName: 'Aceleración',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   }, 
   movement_sprint_speed: {
     type: 'integer',
     viewName: 'Velocidad de Sprint',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   }, 
   movement_agility: {
     type: 'integer',
     viewName: 'Agilidad',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   movement_reactions: {
     type: 'integer',
     viewName: 'Reacción',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   movement_balance: {
     type: 'integer',
     viewName: 'Equilibrio',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   power_shot_power: {
     type: 'integer',
     viewName: 'Potencia de Tiro',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   power_jumping: {
     type: 'integer',
     viewName: 'Potencia de Salto',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   power_stamina: {
     type: 'integer',
     viewName: 'Resistencia',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   power_strength: {
     type: 'integer',
     viewName: 'Fuerza',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   power_long_shots: {
     type: 'integer',
     viewName: 'Potencia de Tiros Largos',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   mentality_aggression: {
     type: 'integer',
     viewName: 'Agresividad',
+    required: true,
+    group: ['juego','habilidad_actitud'],
     esNombre: false,
     esSkill: true,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   mentality_interceptions: {
     type: 'integer',
     viewName: 'Intercepciones',
+    required: true,
+    group: ['juego','habilidad_actitud'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   mentality_positioning: {
     type: 'integer',
     viewName: 'Posicionamiento',
+    required: true,
+    group: ['juego','habilidad_actitud'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   mentality_vision: {
     type: 'integer',
     viewName: 'Visión',
+    required: true,
+    group: ['juego','habilidad_actitud'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   mentality_penalties: {
     type: 'integer',
     viewName: 'Penales',
+    required: true,
+    group: ['juego','habilidad_actitud'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   mentality_composure: {
     type: 'integer',
     viewName: 'Comportamiento',
+    required: true,
+    group: ['juego','habilidad_actitud'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   defending_marking: {
     type: 'integer',
     viewName: 'Marca en Defensa',
+    required: true,
+    group: ['juego','habilidad_especifica','defensa'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   defending_standing_tackle: {
     type: 'integer',
     viewName: 'Defensa sin derribo',
+    required: true,
+    group: ['juego','habilidad_especifica','defensa'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   defending_sliding_tackle: {
     type: 'integer',
     viewName: 'Barrida defensiva',
+    required: true,
+    group: ['juego','habilidad_especifica','defensa'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   goalkeeping_diving: {
     type: 'integer',
     viewName: 'Arquero: Atrapada de Volea',
+    required: true,
+    group: ['juego','habilidad_especifica','arco'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   goalkeeping_handling: {
     type: 'integer',
     viewName: 'Arquero: Manejo del Balón',
+    required: true,
+    group: ['juego','habilidad_especifica','arco'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   goalkeeping_kicking: {
     type: 'integer',
     viewName: 'Arquero: Saque',
+    required: true,
+    group: ['juego','habilidad_especifica','arco'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   goalkeeping_positioning: {
     type: 'integer',
     viewName: 'Arquero: Posicionamiento',
+    required: true,
+    group: ['juego','habilidad_especifica','arco'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   goalkeeping_reflexes: {
     type: 'integer',
     viewName: 'Arquero: Reflejos',
+    required: true,
+    group: ['juego','habilidad_especifica','arco'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   goalkeeping_speed: {
     type: 'integer',
     viewName: 'Arquero: Velocidad',
+    required: true,
+    group: ['juego','habilidad_especifica','arco'],
     esSkill: true,
     esNombre: false,
     minVal: 0,
     maxVal: 100,
-    minLen: 0,
-    maxLen: 0
+    minLen: -1,
+    maxLen: -1
   },
   player_traits: {
     type: 'string',
     viewName: 'Características',
+    required: true,
+    group: ['juego','habilidad_global'],
     esSkill: false,
     esNombre: false,
-    minVal: 0,
-    maxVal: 0,
+    minVal: -1,
+    maxVal: -1,
     minLen: 3,
     maxLen: 255
   },

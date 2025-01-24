@@ -135,6 +135,8 @@ class PlayerDB {
                 name: key,
                 type: Player.attributeTypes[key].type,
                 viewName: Player.attributeTypes[key].viewName,
+                required: Player.attributeTypes[key].required,
+                group: Player.attributeTypes[key].group,
                 esSkill: Player.attributeTypes[key].esSkill,
                 esNombre: Player.attributeTypes[key].esNombre,
                 minVal: Player.attributeTypes[key].minVal,
