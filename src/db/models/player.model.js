@@ -369,7 +369,7 @@ Player.attributeTypes = {
     maxVal: 65,
     minLen: -1,
     maxLen: -1
-  },
+  },  
   gender: {
     type: 'string',
     viewName: 'Sexo',
