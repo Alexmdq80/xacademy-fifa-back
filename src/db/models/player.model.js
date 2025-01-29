@@ -280,19 +280,19 @@ Player.attributeTypes = {
     required: true,
     contenido: ['múltiple'],
     sugerencia: '',
-    group: ['juego'],
+    group: ['general','juego'],
     minVal: -1,
     maxVal: -1,
-    minLen: 2,
-    maxLen: 255
+    minLen: -1,
+    maxLen: -1
   },
   club_name: {
     type: 'string',
     viewName: 'Club',
     required: true,
-    contenido: ['cadena','nombre'],
+    contenido: ['cadena','alfanumérico'],
     sugerencia: 'Los Lobactis Fútbol Club',
-    group: ['juego'],
+    group: ['general'],
     minVal: -1,
     maxVal: -1,
     minLen: 3,
@@ -340,7 +340,7 @@ Player.attributeTypes = {
     required: true,
     contenido: ['moneda'],
     sugerencia: '1000000',
-    group: ['juego'],
+    group: ['general'],
     minVal: 0,
     maxVal: 350000000,
     minLen: -1,
@@ -352,7 +352,7 @@ Player.attributeTypes = {
     required: true,
     contenido: ['moneda'],
     sugerencia: '100000',
-    group: ['juego'],
+    group: ['general'],
     minVal: 0,
     maxVal: 1000000,
     minLen: -1,
@@ -415,8 +415,8 @@ Player.attributeTypes = {
     group: ['juego','habilidad_global'],
     minVal: -1,
     maxVal: -1,
-    minLen: 3,
-    maxLen: 255
+    minLen: -1,
+    maxLen: -1
   },
   weak_foot: {
     type: 'integer',
@@ -461,10 +461,10 @@ Player.attributeTypes = {
     contenido: ['rango_categorías'],
     sugerencia: '',
     group: ['juego','habilidad_global'],
-    minVal: -1,
-    maxVal: -1,
-    minLen: 3,
-    maxLen: 255
+    minVal: 0,
+    maxVal: 2,
+    minLen: -1,
+    maxLen: -1
   },
   body_type: {
     type: 'string',
@@ -475,8 +475,8 @@ Player.attributeTypes = {
     group: ['juego','habilidad_global'],
     minVal: -1,
     maxVal: -1,
-    minLen: 3,
-    maxLen: 255
+    minLen: -1,
+    maxLen: -1
   },
   pace: {
     type: 'integer',
@@ -979,234 +979,10 @@ Player.attributeTypes = {
     group: ['juego','habilidad_global'],
     minVal: -1,
     maxVal: -1,
-    minLen: 3,
-    maxLen: 255
+    minLen: -1,
+    maxLen: -1
   },
 };
-
-// // Player.attributeTypes = {
-// //   id: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   fifa_version: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   fifa_update: {
-//     type: 'string',
-//     viewName: 'id'
-//   }, 
-// //   player_face_url: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   long_name: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   player_positions: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   club_name: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   nationality_name: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   overall: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   potential: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   value_eur: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   wage_eur: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   age: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   gender: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   height_cm: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   weight_kg: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   preferred_foot: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   weak_foot: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   skill_moves: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   international_reputation: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   work_rate: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   body_type: {
-//     type: 'string',
-//     viewName: 'id'
-//   },
-// //   pace: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   shooting: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   passing: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   dribbling: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   skill_curve: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   skill_fk_accuracy: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   skill_long_passing: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   skill_ball_control: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   movement_acceleration: {
-//     type: 'integer',
-//     viewName: 'id'
-//   }, 
-// //   movement_sprint_speed: {
-//     type: 'integer',
-//     viewName: 'id'
-//   }, 
-// //   movement_agility: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   movement_reactions: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   movement_balance: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   power_shot_power: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   power_jumping: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   power_stamina: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   power_strength: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   power_long_shots: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   mentality_aggression: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   mentality_interceptions: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   mentality_positioning: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   mentality_vision: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   mentality_penalties: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   mentality_composure: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   defending_marking: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   defending_standing_tackle: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   defending_sliding_tackle: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   goalkeeping_diving: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   goalkeeping_handling: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   goalkeeping_kicking: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   goalkeeping_positioning: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   goalkeeping_reflexes: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   goalkeeping_speed: {
-//     type: 'integer',
-//     viewName: 'id'
-//   },
-// //   player_traits: 'string'
-// // };
 
 
 module.exports = Player;
