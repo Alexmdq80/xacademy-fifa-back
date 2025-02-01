@@ -31,21 +31,40 @@ passport.use(new JWTStrategy({
 
 router.use(express.json());
 
-router.post("/", passport.authenticate('jwt', { session: false }), async (req, res)=>{
-//  router.post("/", async (req, res)=>{
+// router.post("/", passport.authenticate('jwt', { session: false }), async (req, res)=>{
+// //  router.post("/", async (req, res)=>{
 
-    const { newPlayer } = req.body;
+//     const { newPlayer } = req.body;
 
-    // console.log(newPlayer);
-    try {
-        const id = await PlayerDB.create( newPlayer );
-        res.status(201).json({ id: id, player: newPlayer });
-    } catch(error) {
-        // console.log(error);
-        res.status(500).send(error.message);
-    }
+//     // console.log(newPlayer);
+//     try {
+//         const id = await PlayerDB.create( newPlayer );
+//         res.status(201).json({ id: id, player: newPlayer });
+//     } catch(error) {
+//         // console.log(error);
+//         res.status(500).send(error.message);
+//     }
 
-});
+// });
+
+router.post("/", async (req, res)=>{
+    //  router.post("/", async (req, res)=>{
+    
+        const { newPlayer } = req.body;
+        console.log("paso");
+        console.log(newPlayer);
+        // console.log(newPlayer);
+        try {
+            const id = await PlayerDB.create( newPlayer );
+            console.log(newPlayer);
+            res.status(201).json({ id: id, player: newPlayer });
+        } catch(error) {
+            // console.log(error);
+
+            res.status(500).send(error.message);
+        }
+    
+    });
 
 // router.get("/", passport.authenticate('jwt', { session: false }), async (req, res)=>{
 // router.get("/", async (req, res)=>{

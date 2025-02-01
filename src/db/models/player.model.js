@@ -259,7 +259,7 @@ Player.attributeTypes = {
     group: ['general'],
     minVal: -1,
     maxVal: -1,
-    minLen: 8,
+    minLen: 0,
     maxLen: 255
   },
   long_name: {
@@ -316,7 +316,7 @@ Player.attributeTypes = {
     required: true,
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad'],
+    group: ['juego','habilidad','habilidad_global'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -379,8 +379,8 @@ Player.attributeTypes = {
     group: ['personal'],
     minVal: -1,
     maxVal: -1,
-    minLen: 3,
-    maxLen: 255
+    minLen: -1,
+    maxLen: -1
   },
   height_cm: {
     type: 'integer',
@@ -435,7 +435,7 @@ Player.attributeTypes = {
     viewName: 'Habilidades Especiales',
     required: true,
     contenido: ['número_pequeño'],
-    sugerencia: '',
+    sugerencia: '3',
     group: ['juego','habilidad_global'],
     minVal: 1,
     maxVal: 5,
@@ -447,7 +447,7 @@ Player.attributeTypes = {
     viewName: 'Reputación Internacional',
     required: true,
     contenido: ['número_pequeño'],
-    sugerencia: '',
+    sugerencia: '3',
     group: ['juego','habilidad_global'],
     minVal: 1,
     maxVal: 5,
