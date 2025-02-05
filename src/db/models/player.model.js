@@ -6,7 +6,7 @@ const Player = sequelize.define("players", {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false,
+      allowNull: false
     },
     fifa_version: {
       type: DataTypes.STRING,
@@ -18,33 +18,39 @@ const Player = sequelize.define("players", {
     },
     player_face_url: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     long_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     player_positions: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     club_name: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: true
     },
     nationality_name: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: true
     },
     overall: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     potential: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     value_eur: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     wage_eur: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     age: {
       type: DataTypes.INTEGER,
@@ -56,153 +62,203 @@ const Player = sequelize.define("players", {
     },
     height_cm: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     weight_kg: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     preferred_foot: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     weak_foot: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     skill_moves: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     international_reputation: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     work_rate: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     body_type: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     pace: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     shooting: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     passing: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     dribbling: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     defending: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     physic: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },    
     attacking_crossing: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     attacking_finishing: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     attacking_heading_accuracy: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     attacking_short_passing: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     attacking_volleys: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     skill_dribbling: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     skill_curve: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     skill_fk_accuracy: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     skill_long_passing: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     skill_ball_control: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     movement_acceleration: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     movement_sprint_speed: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     movement_agility: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     movement_reactions: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     movement_balance: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     power_shot_power: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     power_jumping: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     power_stamina: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     power_strength: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     power_long_shots: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     mentality_aggression: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     mentality_interceptions: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     mentality_positioning: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     mentality_vision: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     mentality_penalties: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     mentality_composure: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     defending_marking: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     defending_standing_tackle: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     defending_sliding_tackle: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     goalkeeping_diving: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     goalkeeping_handling: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     goalkeeping_kicking: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     goalkeeping_positioning: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     goalkeeping_reflexes: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     goalkeeping_speed: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     player_traits: {
       type: DataTypes.STRING,
+      allowNull: true
     }
   }, {
     // Opciones adicionales
@@ -217,10 +273,10 @@ Player.attributeTypes = {
   id: {
     type: 'integer',
     viewName: 'ID',
-    required: true,
-    contenido: ['número'],
+    required: '',
+    contenido: ['cadena','número'],
     sugerencia: '',
-    group: ['key'],
+    group: ['key','personal'],
     minVal: -1,
     maxVal: -1,
     minLen: -1,
@@ -229,7 +285,7 @@ Player.attributeTypes = {
   fifa_version: {
     type: 'string',
     viewName: 'Versión FIFA',
-    required: false,
+    required: '',
     contenido: ['número_pequeño'],
     sugerencia: '20',
     group: ['general'],
@@ -241,7 +297,7 @@ Player.attributeTypes = {
   fifa_update: {
     type: 'string',
     viewName: 'Update de FIFA',
-    required: false,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '1',
     group: ['general'],
@@ -253,7 +309,7 @@ Player.attributeTypes = {
   player_face_url: {
     type: 'string',
     viewName: 'URL de la Foto',
-    required: false,
+    required: '',
     contenido: ['cadena','url'],
     sugerencia: 'https://',
     group: ['general'],
@@ -265,7 +321,7 @@ Player.attributeTypes = {
   long_name: {
     type: 'string',
     viewName: 'Nombres y Apellidos',
-    required: true,
+    required: '',
     contenido: ['cadena','nombre'],
     sugerencia: 'Alexander Xavier Lobactis',
     group: ['personal'],
@@ -277,7 +333,7 @@ Player.attributeTypes = {
   player_positions: {
     type: 'string',
     viewName: 'Posiciones',
-    required: true,
+    required: '',
     contenido: ['múltiple'],
     sugerencia: '',
     group: ['general','juego'],
@@ -289,7 +345,7 @@ Player.attributeTypes = {
   club_name: {
     type: 'string',
     viewName: 'Club',
-    required: true,
+    required: '',
     contenido: ['cadena','alfanumérico'],
     sugerencia: 'Los Lobactis Fútbol Club',
     group: ['general'],
@@ -301,7 +357,7 @@ Player.attributeTypes = {
   nationality_name: {
     type: 'string',
     viewName: 'Nacionalidad',
-    required: true,
+    required: '',
     contenido: ['cadena','nombre'],
     sugerencia: 'Argentina',
     group: ['personal'],
@@ -313,7 +369,7 @@ Player.attributeTypes = {
   overall: {
     type: 'integer',
     viewName: 'Puntuación General',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -325,7 +381,7 @@ Player.attributeTypes = {
   potential: {
     type: 'integer',
     viewName: 'Potencial',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -337,7 +393,7 @@ Player.attributeTypes = {
   value_eur: {
     type: 'integer',
     viewName: 'Valor en Euros',
-    required: true,
+    required: '',
     contenido: ['moneda'],
     sugerencia: '1000000',
     group: ['general'],
@@ -349,7 +405,7 @@ Player.attributeTypes = {
   wage_eur: {
     type: 'integer',
     viewName: 'Salario en Euros',
-    required: true,
+    required: '',
     contenido: ['moneda'],
     sugerencia: '100000',
     group: ['general'],
@@ -361,7 +417,7 @@ Player.attributeTypes = {
   age: {
     type: 'integer',
     viewName: 'Edad',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '25',
     group: ['personal'],
@@ -373,7 +429,7 @@ Player.attributeTypes = {
   gender: {
     type: 'string',
     viewName: 'Sexo',
-    required: true,
+    required: '',
     contenido: ['único'],
     sugerencia: '',
     group: ['personal'],
@@ -385,7 +441,7 @@ Player.attributeTypes = {
   height_cm: {
     type: 'integer',
     viewName: 'Altura (cm)',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '175',
     group: ['personal'],
@@ -397,7 +453,7 @@ Player.attributeTypes = {
   weight_kg: {
     type: 'integer',
     viewName: 'Peso (kg)',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '75',
     group: ['personal'],
@@ -409,9 +465,9 @@ Player.attributeTypes = {
   preferred_foot: {
     type: 'string',
     viewName: 'Pie Preferido',
-    required: true,
+    required: '',
     contenido: ['único'],
-    sugerencia: '',
+    sugerencia: 'Right',
     group: ['juego','habilidad_global'],
     minVal: -1,
     maxVal: -1,
@@ -421,7 +477,7 @@ Player.attributeTypes = {
   weak_foot: {
     type: 'integer',
     viewName: 'Debilidad de Pie',
-    required: true,
+    required: '',
     contenido: ['número_pequeño'],
     sugerencia: '',
     group: ['juego','habilidad_global'],
@@ -433,7 +489,7 @@ Player.attributeTypes = {
   skill_moves: {
     type: 'integer',
     viewName: 'Habilidades Especiales',
-    required: true,
+    required: '',
     contenido: ['número_pequeño'],
     sugerencia: '3',
     group: ['juego','habilidad_global'],
@@ -445,7 +501,7 @@ Player.attributeTypes = {
   international_reputation: {
     type: 'integer',
     viewName: 'Reputación Internacional',
-    required: true,
+    required: '',
     contenido: ['número_pequeño'],
     sugerencia: '3',
     group: ['juego','habilidad_global'],
@@ -457,7 +513,7 @@ Player.attributeTypes = {
   work_rate: {
     type: 'string',
     viewName: 'Ritmo de Trabajo',
-    required: true,
+    required: '',
     contenido: ['rango_categorías'],
     sugerencia: '',
     group: ['juego','habilidad_global'],
@@ -469,10 +525,10 @@ Player.attributeTypes = {
   body_type: {
     type: 'string',
     viewName: 'Tipo de Cuerpo',
-    required: true,
+    required: '',
     contenido: ['único'],
     sugerencia: '',
-    group: ['juego','habilidad_global'],
+    group: ['juego','personal'],
     minVal: -1,
     maxVal: -1,
     minLen: -1,
@@ -481,7 +537,7 @@ Player.attributeTypes = {
   pace: {
     type: 'integer',
     viewName: 'Velocidad',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -493,7 +549,7 @@ Player.attributeTypes = {
   shooting: {
     type: 'integer',
     viewName: 'Disparo',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -505,7 +561,7 @@ Player.attributeTypes = {
   passing: {
     type: 'integer',
     viewName: 'Pase',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -517,7 +573,7 @@ Player.attributeTypes = {
   dribbling: {
     type: 'integer',
     viewName: 'Regate',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -529,7 +585,7 @@ Player.attributeTypes = {
   defending: {
     type: 'integer',
     viewName: 'Defensa',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -541,7 +597,7 @@ Player.attributeTypes = {
   physic: {
     type: 'integer',
     viewName: 'Físico',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_global'],
@@ -553,7 +609,7 @@ Player.attributeTypes = {
   attacking_crossing: {
     type: 'integer',
     viewName: 'Pase en profundidad',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','ataque'],
@@ -565,7 +621,7 @@ Player.attributeTypes = {
   attacking_finishing: {
     type: 'integer',
     viewName: 'Remate',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','ataque'],
@@ -577,7 +633,7 @@ Player.attributeTypes = {
   attacking_heading_accuracy: {
     type: 'integer',
     viewName: 'Cabezazo',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','ataque'],
@@ -589,7 +645,7 @@ Player.attributeTypes = {
   attacking_short_passing: {
     type: 'integer',
     viewName: 'Pase corto',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','ataque'],
@@ -601,7 +657,7 @@ Player.attributeTypes = {
   attacking_volleys: {
     type: 'integer',
     viewName: 'Voleas',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','ataque'],
@@ -613,10 +669,10 @@ Player.attributeTypes = {
   skill_dribbling: {
     type: 'integer',
     viewName: 'Regate (Habilidad)',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','skill'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -625,10 +681,10 @@ Player.attributeTypes = {
   skill_curve: {
     type: 'integer',
     viewName: 'Curva de Aprendizaje',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','skill'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -637,10 +693,10 @@ Player.attributeTypes = {
   skill_fk_accuracy: {
     type: 'integer',
     viewName: 'Puntería',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','skill'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -649,10 +705,10 @@ Player.attributeTypes = {
   skill_long_passing: {
     type: 'integer',
     viewName: 'Pase Largo',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','skill'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -661,10 +717,10 @@ Player.attributeTypes = {
   skill_ball_control: {
     type: 'integer',
     viewName: 'Control del Balón',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','skill'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -673,10 +729,10 @@ Player.attributeTypes = {
   movement_acceleration: {
     type: 'integer',
     viewName: 'Aceleración',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','movement'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -685,10 +741,10 @@ Player.attributeTypes = {
   movement_sprint_speed: {
     type: 'integer',
     viewName: 'Velocidad de Sprint',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','movement'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -697,10 +753,10 @@ Player.attributeTypes = {
   movement_agility: {
     type: 'integer',
     viewName: 'Agilidad',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','movement'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -709,10 +765,10 @@ Player.attributeTypes = {
   movement_reactions: {
     type: 'integer',
     viewName: 'Reacción',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','movement'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -721,10 +777,10 @@ Player.attributeTypes = {
   movement_balance: {
     type: 'integer',
     viewName: 'Equilibrio',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','movement'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -733,10 +789,10 @@ Player.attributeTypes = {
   power_shot_power: {
     type: 'integer',
     viewName: 'Potencia de Tiro',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','power'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -745,10 +801,10 @@ Player.attributeTypes = {
   power_jumping: {
     type: 'integer',
     viewName: 'Potencia de Salto',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','power'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -757,10 +813,10 @@ Player.attributeTypes = {
   power_stamina: {
     type: 'integer',
     viewName: 'Resistencia',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','power'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -769,10 +825,10 @@ Player.attributeTypes = {
   power_strength: {
     type: 'integer',
     viewName: 'Fuerza',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','power'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -781,10 +837,10 @@ Player.attributeTypes = {
   power_long_shots: {
     type: 'integer',
     viewName: 'Potencia de Tiros Largos',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_global'],
+    group: ['juego','habilidad','habilidad_específica','power'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -793,10 +849,10 @@ Player.attributeTypes = {
   mentality_aggression: {
     type: 'integer',
     viewName: 'Agresividad',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_actitud'],
+    group: ['juego','habilidad','habilidad_específica','habilidad_mental'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -805,10 +861,10 @@ Player.attributeTypes = {
   mentality_interceptions: {
     type: 'integer',
     viewName: 'Intercepciones',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_actitud'],
+    group: ['juego','habilidad','habilidad_específica','habilidad_mental'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -817,10 +873,10 @@ Player.attributeTypes = {
   mentality_positioning: {
     type: 'integer',
     viewName: 'Posicionamiento',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_actitud'],
+    group: ['juego','habilidad','habilidad_específica','habilidad_mental'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -829,10 +885,10 @@ Player.attributeTypes = {
   mentality_vision: {
     type: 'integer',
     viewName: 'Visión',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_actitud'],
+    group: ['juego','habilidad','habilidad_específica','habilidad_mental'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -841,10 +897,10 @@ Player.attributeTypes = {
   mentality_penalties: {
     type: 'integer',
     viewName: 'Penales',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_actitud'],
+    group: ['juego','habilidad','habilidad_específica','habilidad_mental'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -853,10 +909,10 @@ Player.attributeTypes = {
   mentality_composure: {
     type: 'integer',
     viewName: 'Comportamiento',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
-    group: ['juego','habilidad','habilidad_actitud'],
+    group: ['juego','habilidad','habilidad_específica','habilidad_mental'],
     minVal: 0,
     maxVal: 100,
     minLen: -1,
@@ -865,7 +921,7 @@ Player.attributeTypes = {
   defending_marking: {
     type: 'integer',
     viewName: 'Marca en Defensa',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','defensa'],
@@ -877,7 +933,7 @@ Player.attributeTypes = {
   defending_standing_tackle: {
     type: 'integer',
     viewName: 'Defensa sin derribo',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','defensa'],
@@ -889,7 +945,7 @@ Player.attributeTypes = {
   defending_sliding_tackle: {
     type: 'integer',
     viewName: 'Barrida defensiva',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','defensa'],
@@ -901,7 +957,7 @@ Player.attributeTypes = {
   goalkeeping_diving: {
     type: 'integer',
     viewName: 'Arquero: Atrapada de Volea',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','arco'],
@@ -913,7 +969,7 @@ Player.attributeTypes = {
   goalkeeping_handling: {
     type: 'integer',
     viewName: 'Arquero: Manejo del Balón',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','arco'],
@@ -925,7 +981,7 @@ Player.attributeTypes = {
   goalkeeping_kicking: {
     type: 'integer',
     viewName: 'Arquero: Saque',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','arco'],
@@ -937,7 +993,7 @@ Player.attributeTypes = {
   goalkeeping_positioning: {
     type: 'integer',
     viewName: 'Arquero: Posicionamiento',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','arco'],
@@ -949,7 +1005,7 @@ Player.attributeTypes = {
   goalkeeping_reflexes: {
     type: 'integer',
     viewName: 'Arquero: Reflejos',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','arco'],
@@ -961,7 +1017,7 @@ Player.attributeTypes = {
   goalkeeping_speed: {
     type: 'integer',
     viewName: 'Arquero: Velocidad',
-    required: true,
+    required: '',
     contenido: ['número_mediano'],
     sugerencia: '50',
     group: ['juego','habilidad','habilidad_específica','arco'],
@@ -973,7 +1029,7 @@ Player.attributeTypes = {
   player_traits: {
     type: 'string',
     viewName: 'Características',
-    required: true,
+    required: '',
     contenido: ['múltiple'],
     sugerencia: '',
     group: ['juego','habilidad_global'],

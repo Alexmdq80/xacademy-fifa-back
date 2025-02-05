@@ -130,12 +130,13 @@ class PlayerDB {
             // console.log(fieldsAndTypes);
             
             // return fieldsAndTypes;
-         
+            const atributos = Player.getAttributes();
+
             const playerAttributes = Object.keys(Player.attributeTypes).map(key => ({
                 name: key,
                 type: Player.attributeTypes[key].type,
                 viewName: Player.attributeTypes[key].viewName,
-                required: Player.attributeTypes[key].required,
+                required: !atributos[key].allowNull,
                 contenido: Player.attributeTypes[key].contenido,
                 sugerencia: Player.attributeTypes[key].sugerencia,
                 group: Player.attributeTypes[key].group,
