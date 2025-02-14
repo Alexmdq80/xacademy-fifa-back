@@ -138,7 +138,7 @@ class PlayerDB {
                 viewName: Player.attributeTypes[key].viewName,
                 required: !atributos[key].allowNull,
                 contenido: Player.attributeTypes[key].contenido,
-                sugerencia: Player.attributeTypes[key].sugerencia,
+                // sugerencia: atributos[key].allowNull? null: Player.attributeTypes[key].sugerencia,
                 group: Player.attributeTypes[key].group,
                 // esSkill: Player.attributeTypes[key].esSkill,
                 // esNombre: Player.attributeTypes[key].esNombre,

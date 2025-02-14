@@ -149,8 +149,8 @@ router.get('/:playerId', async (req,res) => {
     
 });
 
-router.put('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
-// router.put('/:playerId', async (req,res) => {
+// router.put('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
+router.put('/:playerId', async (req,res) => {
     const { playerId } = req.params;
     const playerToUpdate = req.body.playerToUpdate;
    
