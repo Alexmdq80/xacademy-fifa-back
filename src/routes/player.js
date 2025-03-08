@@ -95,9 +95,40 @@ router.post("/", async (req, res)=>{
 // });
 
 // ******FILTRO NUEVO CON MIN Y MAX*******/
+// router.get("/", async (req, res)=>{
+    
+//     const { filtros, valores_min, valores_max, archivo } = req.query;
+//     const { page = 1, limit = 100 } = req.query;
+
+//     const limite = convertirAEntero(limit);
+
+//     try {
+//         // console.log(valores_min[0]);
+//         // console.log(valores_max[0]);
+//         const result = await PlayerDB.getFiltro( filtros, valores_min, valores_max, page, limite);
+
+//         if (!result) throw new Error('No se encuentran jugadores con ese filtro.');
+//         if (!archivo) {
+
+//         } else if (archivo != "csv" && archivo != "xlsx" && archivo != "ambos") {
+//             throw new Error('Opción de archivo de salida no válida.')
+//         } else {
+//             PlayerDB.descargarArchivo(result.data, archivo);
+//             }
+
+//         res.status(200).json(result);
+
+//     } catch(error) {
+//         res.status(500).send(error.message);
+//     }
+// });
+    
+// ******FILTRO NUEVO CON MIN Y MAX*******/
+
+// ******ORDEN Y FILTRO CON MIN Y MAX*******/
 router.get("/", async (req, res)=>{
     
-    const { filtros, valores_min, valores_max, archivo } = req.query;
+    const { sort, direction, filtros, valores_min, valores_max, archivo } = req.query;
     const { page = 1, limit = 100 } = req.query;
 
     const limite = convertirAEntero(limit);
@@ -105,38 +136,7 @@ router.get("/", async (req, res)=>{
     try {
         // console.log(valores_min[0]);
         // console.log(valores_max[0]);
-        const result = await PlayerDB.getFiltro( filtros, valores_min, valores_max, page, limite);
-
-        if (!result) throw new Error('No se encuentran jugadores con ese filtro.');
-        if (!archivo) {
-
-        } else if (archivo != "csv" && archivo != "xlsx" && archivo != "ambos") {
-            throw new Error('Opción de archivo de salida no válida.')
-        } else {
-            PlayerDB.descargarArchivo(result.data, archivo);
-            }
-
-        res.status(200).json(result);
-
-    } catch(error) {
-        res.status(500).send(error.message);
-    }
-});
-    
-// ******FILTRO NUEVO CON MIN Y MAX*******/
-
-// ******FILTRO NUEVO CON MIN Y MAX*******/
-router.get("/orden/", async (req, res)=>{
-    
-    const { orden, sentido, filtros, valores_min, valores_max, archivo } = req.query;
-    const { page = 1, limit = 100 } = req.query;
-
-    const limite = convertirAEntero(limit);
-
-    try {
-        // console.log(valores_min[0]);
-        // console.log(valores_max[0]);
-        const result = await PlayerDB.get( orden, sentido, filtros, valores_min, valores_max, page, limite);
+        const result = await PlayerDB.get( sort, direction, filtros, valores_min, valores_max, page, limite);
 
         if (!result) throw new Error('No se encuentran jugadores con ese filtro.');
         if (!archivo) {

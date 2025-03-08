@@ -1,19 +1,19 @@
-async function paginate(model, page, limit, where = {}) {
-    const offset = (page - 1) * limit;
+// async function paginate(model, page, limit, where = {}) {
+//     const offset = (page - 1) * limit;
   
-    const { count, rows } = await model.findAndCountAll({
-      where,
-      limit,
-      offset
-    });
+//     const { count, rows } = await model.findAndCountAll({
+//       where,
+//       limit,
+//       offset
+//     });
   
-    return {
-      count,
-      rows,
-      pages: Math.ceil(count / limit),
-      page
-    };
-  }
+//     return {
+//       count,
+//       rows,
+//       pages: Math.ceil(count / limit),
+//       page
+//     };
+//   }
 
   function convertirAEntero(str) {
     const numero = parseInt(str, 10);
@@ -25,7 +25,7 @@ async function paginate(model, page, limit, where = {}) {
     }
   }
 
-  async function paginateNew(model, page, limit, where = {}, order = []) {
+  async function paginate(model, page, limit, where = {}, order = []) {
 // le quité el -1 a page- Así que acepto que la página sea 0
     const offset = page * limit;
   
@@ -54,6 +54,6 @@ async function paginate(model, page, limit, where = {}) {
     }
   }
  
-  module.exports = { paginate, convertirAEntero, paginateNew };
+  module.exports = { paginate, convertirAEntero };
 
   
