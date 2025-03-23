@@ -99,6 +99,59 @@ class PlayerDB {
  
      }
 
+    //  ****************************LINEA DE TIEMPO**********
+     static async getDataLineaTiempo( long_name, atributo ) {
+        console.log(long_name);
+        try {
+            const datos = await Player.findAll({
+              where: { long_name: long_name }, // Especifica el nombre del jugador
+              attributes: ['fifa_version', 'fifa_update', atributo], // Especifica la columna que deseas obtener
+               order: [['fifa_version', 'ASC'],['fifa_update', 'ASC']]
+            });
+            
+            if (datos) {
+                // función de ordenar, para no tener que modificar la estructura de la BD
+                // lo cual sería más práctico
+                 // Ordenar los datos en JavaScript
+                datos.sort((a, b) => {
+                    // Función de comparación para ordenar versiones
+                    const compareVersions = (versionA, versionB) => {
+                    const partsA = versionA.split('.').map(Number);
+                    const partsB = versionB.split('.').map(Number);
+            
+                    for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+                        const partA = partsA[i] || 0;
+                        const partB = partsB[i] || 0;
+            
+                        if (partA !== partB) {
+                        return partA - partB;
+                        }
+                    }
+            
+                    return 0; // Son iguales
+                    };
+            
+                    let result = compareVersions(a.fifa_version, b.fifa_version);
+                    if (result === 0) {
+                    result = compareVersions(a.fifa_update, b.fifa_update);
+                    }
+                    return result;
+                });
+            
+                return datos;
+
+                // console.log(datos);
+                return datos; // Devuelve solo el valor de la columna 'nombre'
+            } else {
+                return null; // O algún otro valor para indicar que no se encontró el usuario
+            }
+        } catch (error) {
+           console.error('Error al obtener los datos para la linea de tiempo:', error);
+            return null; // O lanza el error si prefieres
+        }
+       
+     }
+
 
     // static async getFiltro( filtros, valores_min, valores_max, pagina, limite ) {
 

@@ -153,6 +153,25 @@ router.get("/", async (req, res)=>{
         res.status(500).send(error.message);
     }
 });
+
+// ******DATOS PARA LA LÍNEA DE TIEMPO*******/
+router.get("/linea_tiempo", async (req, res)=>{
+    
+    const { long_name, atributo } = req.query;
+    
+
+    try {
+        const result = await PlayerDB.getDataLineaTiempo( long_name, atributo);
+
+        if (!result) throw new Error('No se encuentran datos. Error inesperado.');
+    
+        res.status(200).json(result);
+
+    } catch(error) {
+        res.status(500).send(error.message);
+    }
+});
+
 // router.get('/:playerId', passport.authenticate('jwt', { session: false }), async (req,res) => {
 router.get('/atributos', async (req,res) => { 
 
