@@ -49,7 +49,8 @@ class PlayerDB {
  
          } else if (filtros.length === valores_min.length) {
              for (let i = 0; i < filtros.length; i++) {
-                if (valores_max[i] == 0) {
+                console.log(valores_max[i]);
+                if (valores_max[i] === 'null') {
           
                     const atributo = Player.attributeTypes[filtros[i]];
                   
@@ -313,6 +314,11 @@ class PlayerDB {
     static descargarArchivo(data, tipo) {  
         const attributes = Player.getAttributes();
         const fields = Object.keys(attributes);
+
+        const nombreArchivo = 'data'; // O listado.csv
+        // const rutaArchivo = path.join(__dirname, nombreArchivo); // Ajusta la ruta
+
+
         if (tipo === "csv" || tipo === "ambos") {
              // Campos que deseas incluir en el CSV
             // Crear un objeto Parser con los campos especificados
@@ -325,7 +331,7 @@ class PlayerDB {
             // Crear un archivo CSV
             const fs = require('fs');
             
-            fs.writeFile('data.csv', csv, (err) => {
+            fs.writeFile(nombreArchivo + '.csv', csv, (err) => {
             if (err) {
                 console.error(err);
             } else {
@@ -348,7 +354,7 @@ class PlayerDB {
 
             // Escribir el libro de trabajo a un archivo
             try {
-                xlsx.writeFile(workbook, 'data.xlsx'); 
+                xlsx.writeFile(workbook, nombreArchivo + '.xlsx'); 
                 console.log("XLSX creado exitosamente.");
             } catch(error) {
                 console.log('Error creando XLSX: ', error);

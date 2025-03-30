@@ -7,6 +7,8 @@ const passportJWT = require('passport-jwt');
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 const config = require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 
 const SECRET = config.parsed.SECRET_JWK_KEY;
 
@@ -125,7 +127,37 @@ router.post("/", async (req, res)=>{
     
 // ******FILTRO NUEVO CON MIN Y MAX*******/
 
-// ******ORDEN Y FILTRO CON MIN Y MAX*******/
+// // ******ORDEN Y FILTRO CON MIN Y MAX*******/
+// router.get("/", async (req, res)=>{
+    
+//     const { sort, direction, filtros, valores_min, valores_max, archivo } = req.query;
+//     const { page = 1, limit = 100 } = req.query;
+
+//     const limite = convertirAEntero(limit);
+
+//     try {
+//         // console.log(valores_min[0]);
+//         // console.log(valores_max[0]);
+//         const result = await PlayerDB.get( sort, direction, filtros, valores_min, valores_max, page, limite);
+
+//         if (!result) throw new Error('No se encuentran jugadores con ese filtro.');
+//         if (!archivo) {
+
+//         } else if (archivo != "csv" && archivo != "xlsx" && archivo != "ambos") {
+//             throw new Error('Opción de archivo de salida no válida.')
+//         } else {
+//             PlayerDB.descargarArchivo(result.data, archivo);
+//             }
+
+//         res.status(200).json(result);
+
+//     } catch(error) {
+//         res.status(500).send(error.message);
+//     }
+// });
+
+
+// ******ORDEN Y FILTRO CON MIN Y MAX / CON OPCIÓN PARA DESCARGAR EL ARCHIVO*******/
 router.get("/", async (req, res)=>{
     
     const { sort, direction, filtros, valores_min, valores_max, archivo } = req.query;
@@ -133,6 +165,8 @@ router.get("/", async (req, res)=>{
 
     const limite = convertirAEntero(limit);
 
+    const nombreArchivo = 'data'; 
+    
     try {
         // console.log(valores_min[0]);
         // console.log(valores_max[0]);
@@ -145,7 +179,16 @@ router.get("/", async (req, res)=>{
             throw new Error('Opción de archivo de salida no válida.')
         } else {
             PlayerDB.descargarArchivo(result.data, archivo);
-            }
+            // Establece las cabeceras para forzar la descarga
+            const nombre = nombreArchivo + '.' + archivo;
+            const rutaArchivo = path.join('./', nombre); 
+            console.log('****************');
+            console.log(nombre);
+            res.setHeader('Content-Disposition', `attachment; filename="${nombre}"`);
+            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            const archivoStream = fs.createReadStream(rutaArchivo);
+            archivoStream.pipe(res);
+        }
 
         res.status(200).json(result);
 
@@ -153,7 +196,6 @@ router.get("/", async (req, res)=>{
         res.status(500).send(error.message);
     }
 });
-
 // ******DATOS PARA LA LÍNEA DE TIEMPO*******/
 router.get("/linea_tiempo", async (req, res)=>{
     
