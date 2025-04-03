@@ -318,8 +318,10 @@ class PlayerDB {
         const nombreArchivo = 'data'; // O listado.csv
         // const rutaArchivo = path.join(__dirname, nombreArchivo); // Ajusta la ruta
 
+        console.log(tipo);
 
-        if (tipo === "csv" || tipo === "ambos") {
+        // if (tipo === "csv" || tipo === "ambos") {
+        if (tipo === "csv") {
              // Campos que deseas incluir en el CSV
             // Crear un objeto Parser con los campos especificados
             const parser = new Parser({ fields });
@@ -331,7 +333,7 @@ class PlayerDB {
             // Crear un archivo CSV
             const fs = require('fs');
             
-            fs.writeFile(nombreArchivo + '.csv', csv, (err) => {
+            fs.writeFileSync(nombreArchivo + '.csv', csv, (err) => {
             if (err) {
                 console.error(err);
             } else {
@@ -340,8 +342,9 @@ class PlayerDB {
             });
         } 
 
-        if (tipo === "xlsx" || tipo === "ambos") {
-            const workbook = xlsx.utils.book_new();
+        // if (tipo === "xlsx" || tipo === "ambos") {
+        if (tipo === "xlsx") {
+                const workbook = xlsx.utils.book_new();
 
             const jugadores = data.map(jugador => jugador.dataValues);
 
@@ -361,6 +364,34 @@ class PlayerDB {
             }
         }          
     }
+
+    // static async descargarArchivo(data, tipo) {
+    //     const attributes = Player.getAttributes();
+    //     const fields = Object.keys(attributes);
+    //     const nombreArchivo = 'data';
+    
+    //     try {
+    //         if (tipo === "csv") {
+    //             const parser = new Parser({ fields });
+    //             const csv = parser.parse(data);
+    //             const fs = require('fs');
+    //             await fs.writeFile(nombreArchivo + '.csv', csv);
+    //             console.log('Archivo CSV creado exitosamente');
+    //         }
+    
+    //         if (tipo === "xlsx") {
+    //             const workbook = xlsx.utils.book_new();
+    //             const jugadores = data.map(jugador => jugador.dataValues);
+    //             const ws = xlsx.utils.json_to_sheet(jugadores, { header: fields, skipHeader: false });
+    //             xlsx.utils.book_append_sheet(workbook, ws, 'Data');
+    //             xlsx.writeFile(workbook, nombreArchivo + '.xlsx');
+    //             console.log("XLSX creado exitosamente.");
+    //         }
+    //     } catch (error) {
+    //         console.error('Error al crear el archivo:', error);
+    //         throw error; // Re-lanzar el error para que el llamador pueda manejarlo
+    //     }
+    // }
 }
 
 module.exports = PlayerDB;
