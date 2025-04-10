@@ -50,7 +50,7 @@ class PlayerDB {
          } else if (filtros.length === valores_min.length) {
              for (let i = 0; i < filtros.length; i++) {
                 console.log(valores_max[i]);
-                if (valores_max[i] === 'null') {
+                if (valores_max[i] === 'null' || valores_max[i] == 0) {
           
                     const atributo = Player.attributeTypes[filtros[i]];
                   

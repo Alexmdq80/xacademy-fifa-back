@@ -232,6 +232,60 @@ router.get("/exportar_csv", async (req, res)=>{
     }
 });
 
+// ******ORDEN Y FILTRO CON MIN Y MAX / CON OPCIÓN PARA DESCARGAR EL ARCHIVO .XLSX*******/
+router.get("/exportar_xlsx", async (req, res)=>{
+    
+    const { sort, direction, filtros, valores_min, valores_max } = req.query;
+    const { page = 1, limit = 100 } = req.query;
+
+    const limite = convertirAEntero(limit);
+
+    const nombre = 'data.xlsx'; 
+
+    try {
+
+        const result = await PlayerDB.get( sort, direction, filtros, valores_min, valores_max, page, limite);
+
+        if (!result) throw new Error('No se encuentran jugadores con ese filtro.');
+
+        try {
+            PlayerDB.descargarArchivo(result.data, 'xlsx');
+            const rutaArchivo = path.join('./', nombre); 
+            // res.setHeader('Content-Disposition', `attachment; filename="${nombre}"`);
+            
+            // // res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            // res.setHeader('Content-Type', 'text/csv');
+           
+            // const archivoStream = fs.createReadStream(rutaArchivo);
+            // archivoStream.pipe(res);
+    
+            // res.status(200).json(result);
+            // console.log(path.resolve(rutaArchivo));
+            res.download(rutaArchivo, nombre, (err) => {
+                if (err) {
+                    console.log('Error downloading file:', err);
+                    // Asegúrate de enviar un error al cliente si falla la descarga.
+                    res.status(500).send('Error al descargar el archivo.');
+                } else {
+                    console.log('Descarga completada');
+                    // Eliminar el archivo después de la descarga
+                    fs.unlink(rutaArchivo, (unlinkErr) => {
+                        if (unlinkErr) {
+                            console.error('Error al eliminar el archivo:', unlinkErr);
+                        }
+                    });
+                }
+            });
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+            
+    } catch(error) {
+        res.status(500).send(error.message);
+    }
+});
+
+
 // ******DATOS PARA LA LÍNEA DE TIEMPO*******/
 router.get("/linea_tiempo", async (req, res)=>{
     
